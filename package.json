@@ -1,0 +1,31 @@
+{
+  "name": "asy-mart",
+  "version": "1.0.0",
+  "description": "Introducing AsyMart, your premier partner for seamless procurement solutions. AsyMart specializes in establishing vendor relationships with hotels, restaurants, and resorts, streamlining the supply of groceries, toiletries, and various essentials. With our intuitive phone application, our clients can effortlessly place orders, ensuring timely deliveries of high-quality products. Elevate your hospitality business with AsyMart's efficient and convenient procurement services.",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Satyam1013/Asy-Mart.git"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "\"\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Satyam1013/Asy-Mart/issues"
+  },
+  "homepage": "https://github.com/Satyam1013/Asy-Mart#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.5.0"
+  }
+}
