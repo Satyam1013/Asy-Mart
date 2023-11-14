@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const userRouter = express.Router();
 
-userRouter.post("/register", async (req, res) => {
+userRouter.post("/signup", async (req, res) => {
   const { username, email, password, phoneNo, landlineNo, address } = req.body;
   try {
     bcrypt.hash(password, 5, async (err, hash) => {
@@ -34,7 +34,7 @@ userRouter.post("/login", async (req, res) => {
           res.status(200).send({
             message: "Login Successful",
             username: user.username,
-            token: jwt.sign({ id: user._id }, "peter"),
+            token: jwt.sign({ id: user._id }, "tom"),
           });
         }
       });

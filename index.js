@@ -10,13 +10,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/users", userRouter);
-app.use(authenticator);
+app.use("/employs", userRouter);
+// app.use(authenticator);
 
 app.listen(process.env.port, async () => {
   try {
     await connection;
-    console.log("Connected to 5000 port");
+    console.log("Connected to 5500 port");
   } catch (err) {
     console.log(err);
   }
