@@ -1,0 +1,15 @@
+@import "../../../../../assets/styles/helpers/mixins";
+
+.footer{
+    background-color: #FFFFFF;
+    border-radius: 25px 25px 0 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    @include flex-container(center,center,row);
+    gap: 1rem;
+    padding: 10px 20px;
+    .btn{
+        @include flex-container(center,center,column);
+    }
+}

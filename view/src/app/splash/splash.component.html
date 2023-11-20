@@ -1,0 +1,22 @@
+<div class="splash">
+    <div class="logo-animation" *ngIf="logoAnimation else welcome">
+        <img src="assets/images/splash/logo-animation.gif" alt="logo-animation">
+    </div>
+    <ng-template #welcome>
+        <div class="welcome">
+            <div class="content">
+                <div class="logo">
+                    <img src="assets/images/splash/logo.png" alt="logo">
+                </div>
+                <div class="heading head">
+                    Welcome <br>
+                    to our store
+                </div>
+                <p>Ger your groceries in as fast as one hour</p>
+                <button class="primary-button" (click)="redirect()">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

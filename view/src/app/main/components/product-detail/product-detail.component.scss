@@ -1,0 +1,175 @@
+@import '../../../../assets/styles/helpers/mixins';
+
+.product-detail{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    .top{
+
+        background: #F2F3F2;
+        height: 40%;
+        width: 100%;
+        border-radius: 0 0 25px 25px;
+        padding: 15px;
+        @include flex-container(unset,start,column);
+        backdrop-filter: blur(10px);
+        gap: 25%;
+
+        .header{
+            @include flex-container(center,space-between,row);
+            img{
+                width:1.1rem;
+            }
+
+            .share{
+                width: 1.5rem;
+            }
+        }
+
+        .product-img{
+            width: 100%;
+        }
+
+    }
+
+    .bottom{
+        width: 100%;
+        @include flex-container (center, start,column);
+        padding: 20px;
+        padding-top: 10px;
+        .product-price{
+            width: 100%;
+            @include flex-container (start,center,column);
+            gap: 15px;
+            padding-bottom: 1.5rem;
+            .info-top{
+                @include flex-container (center, space-between,row);
+                width: 100%;
+                .left{
+                    .name{
+                        @include font(2, #000000);
+                        font-weight: 600;
+                        line-height: 35px;
+                    }
+                    .desc{
+                        @include font(1, #7C7C7C);
+                        padding-top: 3px;
+                        font-weight: 400;
+                    }
+                }
+
+                .right{
+                    img{
+                        width: 30px;
+                    }
+                }
+            }
+
+            .info-bottom{
+                @include flex-container(center,space-between,row);
+                width: 100%;
+                .left{
+                    @include flex-container(center,space-between,row);
+                    width: 40%;
+                    .plus, .minus{
+                        img{
+                            width: 2rem;
+                        }
+
+                        &.inactive{
+                            opacity: 50%;
+                        }
+                    }
+
+                    .quantity{
+                        padding: 0.5rem 1.2rem;
+                        border-radius: 15px;
+                        @include font(1.5, #000000);
+                        text-align: center;
+                        border: 1px solid #E2E2E2;
+                    }
+                }
+
+                .right{
+                    @include font(1.7, #000000);
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .row{
+            width: 100%;
+            padding: 10px 0;
+            border-top: 1px solid #E2E2E2;
+            padding-bottom: 0;
+            @include flex-container(start,center,column);
+            .detail-top{
+                @include flex-container(center,space-between,row);
+                width: 100%;
+                .text{
+                    @include font(1.2, #000000);
+                    line-height: 35px;
+                    font-weight: 600;
+                }
+
+                .arrow{
+                    @include flex-container(center,center,row);
+                    gap: 2px;
+
+                    &.inactive{
+                        rotate: 90deg;
+                    }
+
+                    // .nutrition{
+                    //     padding: 2px 5px;
+                    //     background: #c9c9c9;
+                    //     border-radius: 3px;
+                    //     .detail{
+                    //         @include font(0.7, #000000);
+                    //     }
+                    // }
+
+                    .review{
+                        @include flex-container(center,center,row);
+                        img{
+                            width: 1.4rem;
+                        }
+                    }
+                }   
+
+            }
+
+
+            .show-detail{
+                padding: 5px 10px;
+                padding-bottom: 0;
+                @include font(1.1, #7C7C7C);
+                padding-bottom: 10px;
+            }
+        }
+
+        .product-detail {
+            .arrow{
+                img{
+                    width: 1.1rem;
+                    rotate: -90deg;
+                }
+            }
+        }
+
+        button{
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .btn-row{
+            @include flex-container(center,center,row);
+            gap: 10px;
+            width: 100%;
+            margin-top: 1rem;
+            button{
+                width: 40%;
+            }
+        }
+    }
+}

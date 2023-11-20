@@ -1,0 +1,13 @@
+@import "variable";
+
+@mixin flex-container($align:center,$justify: center, $flex-direction: row){
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $flex-direction;
+}
+
+@mixin font($size:14, $color: #fff){
+    font-size: $size + rem;
+    color: $color;
+}

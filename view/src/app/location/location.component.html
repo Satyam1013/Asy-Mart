@@ -1,0 +1,29 @@
+<div class="location">
+  <div class="header-back" (click)="back()">
+    <img src="assets/images/shared/back-arrow.svg" alt="" />
+  </div>
+  <div class="location-img">
+    <img src="assets/images/location/location.svg" alt="" />
+  </div>
+
+  <div class="heading h2">Confirm your location</div>
+
+  <p class="text">
+    If you have multiple location please select your location from dropdown.
+  </p>
+
+  <div class="custom-select dropdown">
+    <form  [formGroup]="locationForm">
+      <label> Your Zone</label>
+      <select formControlName="zone">
+        <option *ngFor="let places of zone" [value]="places.index">{{places.Zone}}</option>
+      </select>
+      <label [class.disable]="locationForm.value.zone == null"> Your Resort</label>
+      <select [class.disable]="locationForm.value.zone == null" formControlName="resort">
+        <option *ngFor="let zone of zone[locationForm.value.zone]?.resorts" [value]="zone.resort" >{{zone.resort}}</option>
+      </select>
+    </form>
+  </div>
+
+  <button class="primary-button" (click)="submit()">Submit</button>
+</div>

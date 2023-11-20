@@ -1,0 +1,12 @@
+@import "../../assets/styles/helpers/mixins";
+
+.main {
+    width: 100%;
+    height: 100%;
+    .components{
+        height: 100%;
+         &.active{
+            height: calc(100% - 55px);
+         }
+    }
+}

@@ -1,0 +1,16 @@
+<div class="search">
+    <div class="header">
+      <img src="assets/images/shared/back-arrow.svg" alt="">
+      <div class="heading">{{headerName}}</div>
+      <img src="assets/images/shared/back-arrow.svg" alt="">
+    </div>
+  
+    <div class="search-content">
+        <div class="products">
+            <div class="after-search-ui" *ngFor="let data of topCatagories; let i = index">
+                <app-product-block [productData]="data"></app-product-block>
+            </div>
+        </div>
+    </div>
+  </div>
+  

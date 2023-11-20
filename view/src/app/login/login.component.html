@@ -1,0 +1,33 @@
+<div class="login">
+    <div class="logo">
+        <img src="assets/images/splash/logo.png" alt="">
+    </div>
+    <div class="logining">
+        <div class="heading">
+            Loging
+        </div>
+        <p>Enter your email and password</p>
+        <div class="form">
+            <form [formGroup]="loginForm">
+                <div class="email">
+                    <label for="email">Email</label>
+                    <input class="login-input" type="email" formControlName="email">
+                </div>
+                <div class="pass">
+                    <label for="pass">password</label>
+                    <input class="login-input" type="password" formControlName="pass">
+                </div>
+            </form>
+
+        </div>
+        <div class="forgot-pass">
+            Forgot Password?
+        </div>
+        <button class="primary-button" [class.disable]="loginForm.invalid" (click)="loginUser()">
+            Log In
+        </button>
+    </div>
+    <div class="contact">
+        Don't have an account? <a>Contact Us</a>
+    </div>
+</div>

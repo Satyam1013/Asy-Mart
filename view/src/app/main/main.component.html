@@ -1,0 +1,8 @@
+<div class="main">
+    <div class="components" [class.active]="activeChildRouteData.showFooter">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="footer" *ngIf="activeChildRouteData.showFooter">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="search">
+  <div class="header">
+    <div class="heading">Find Products</div>
+    <div class="search-btn">
+      <input class="search-input" placeholder="Search Product" type="text" [(ngModel)]="searchValue" (change)="searchProduct($event.target)" />
+      <img src="assets/images/shared/search-btn.svg" alt="search">
+    </div>
+  </div>
+
+  <div class="search-content">
+    <div class="before-search-ui products" *ngIf="!showProducts else searchProductUi">
+      <div class="category-block" [ngStyle]="{ 'background-color': bannerColor[i], 'border-color':bannerColor[i] }"  *ngFor="let data of topCatagories; let i = index">
+        <img [src]="data.img" alt="">
+        <div class="name">{{data.name}}</div>
+      </div>
+    </div>
+    <ng-template #searchProductUi>
+        <div class="products">
+            <div class="after-search-ui" *ngFor="let data of topCatagories; let i = index">
+                <app-product-block [productData]="data" [searchedParams]="searchValue"></app-product-block>
+            </div>
+        </div>
+    </ng-template>
+  </div>
+</div>

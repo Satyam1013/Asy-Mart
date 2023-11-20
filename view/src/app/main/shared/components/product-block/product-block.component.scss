@@ -1,0 +1,47 @@
+@import '../../../../../assets/styles/helpers/mixins';
+
+.product{
+    width: 10rem;
+    height: 15rem;
+    background: transparent;
+    border-radius: 25px;
+    border: 1px solid #E2E2E2;
+    @include flex-container(center,space-around,column);
+    padding: 0.7rem;
+    padding-bottom: 5px;
+    .top{
+        img{
+            width: 8rem;
+            max-width: 10rem;
+        }
+    }
+    .middle{
+        @include flex-container(start,start,column);
+        width: 100%;
+        .product-name{
+            @include font(1.1,#181725);
+            font-weight: bold;
+        }
+        .product-desc{
+            @include font(0.8, #7C7C7C);
+        }
+    }
+
+    .bottom{
+        width: 100%;
+        @include flex-container(center,space-between,row);
+        .price{
+            @include font(1.2,#181725);
+            font-weight: bold;
+        }
+        .add-btn{
+            background: #53B175;
+            border-radius: 15px;
+            padding: 13px;
+            img{
+                width: 20px;
+                margin-top: -5px;
+            }
+        }
+    }   
+}

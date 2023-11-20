@@ -1,0 +1,82 @@
+<div class="product-detail">
+    <div class="top">
+        <div class="header">
+            <img src="assets/images/shared/back-arrow.svg" alt="backarrow" (click)="back()">
+            <img src="assets/images/shared/share.svg" class="share" alt="share">
+        </div>
+        <div class="product-img">
+            <app-slider></app-slider>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="product-price">
+            <div class="info-top">
+                <div class="left">
+                    <div class="name">
+                        Apple
+                    </div>
+                    <div class="desc">
+                        1kg/price
+                    </div>
+                </div>
+                <div class="right">
+                    <img src="assets/images/shared/heart-unlike.svg" alt="heart">
+                </div>
+            </div>
+            <div class="info-bottom">
+                <div class="left">
+                    <div class="minus" [class.inactive]="true">
+                        <img src="assets/images/shared/minus.svg" alt="minus">
+                    </div>
+                    <div class="quantity">
+                        1
+                    </div>
+                    <div class="plus" [class.inactive]="false">
+                        <img src="assets/images/shared/plus.svg" alt="plus">
+                    </div>
+                </div>
+
+                <div class="right">
+                    ₹75
+                </div>
+            </div>
+        </div>
+        <div class="product-detail row" *ngFor="let data of productDetail.details; let i = index;">
+            <div class="detail-top">
+                <div class="text">
+                    {{data.heading}}
+                </div>
+                <div class="arrow" [class.inactive]="detailToggle[i]" (click)="openDetail(i)">
+                    <img src="assets/images/shared/arrow.svg" alt="arrow-img">
+                </div>
+            </div>
+            <div class="show-detail" *ngIf="detailToggle[i]">
+                {{data.desc}}
+            </div>
+        </div>  
+        <div class="review row">
+            <div class="detail-top">
+                <div class="text">
+                    Review Product
+                </div>
+                <div class="arrow">
+                    <div class="review">
+                        <img src="assets/images/shared/star.svg" alt="star" *ngFor="let a of reviewStar;let i = index">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="primary-button" (click)="action()" *ngIf="!isProductadded">
+            Add to Basket
+        </button>
+
+        <div class="btn-row" *ngIf="isProductadded">
+            <button class="primary-button" (click)="action()">
+                Remove
+            </button>
+            <button class="primary-button" (click)="redirect()">
+                Go to checkout
+            </button>
+        </div>
+    </div>
+</div>

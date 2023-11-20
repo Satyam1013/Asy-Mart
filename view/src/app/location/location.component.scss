@@ -1,0 +1,56 @@
+@import '/src/assets/styles/helpers/mixins';
+
+.location{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    padding: 5%;
+    @include flex-container(center,start,column);
+    gap: 1rem;
+    background: linear-gradient(to top, rgba(255,0,0,0), $secondary-color);
+
+    .header-back{
+        width: 100%;
+        text-align: left;
+        img{
+            width: 1rem;
+        }
+    }
+
+    .heading, .text{
+        color: #000000;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .heading{
+        padding-top: 1rem;
+        line-height: 25px;
+    }
+    
+    .text{
+        width: 90%;
+        font-size: 0.7rem;
+    }
+    .location-img{
+        img{
+            width: 15rem;
+        }
+    }
+
+    .dropdown{
+        padding-top: 2rem;
+        label{
+            text-align: left;
+        }
+    }
+
+    select{
+        margin-bottom: 1rem;
+    }
+
+    button{
+        margin-top: 1.5rem;
+        width: 100%;
+    }
+}
