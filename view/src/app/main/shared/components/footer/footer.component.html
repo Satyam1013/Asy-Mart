@@ -1,6 +1,6 @@
 <div class="footer">
-    <div class="btn" *ngFor="let btn of footerConetnt; let i = index">
-        <img [src]="btn.inactive" alt="">
+    <div class="btn" *ngFor="let btn of footerConetnt; let i = index" (click)="redirect(btn.name)">
+        <img [src]="'assets/images/footer/' +btn.btnImg + '.svg'" alt="">
         <div class="name">{{btn.name}}</div>
     </div>
 </div>

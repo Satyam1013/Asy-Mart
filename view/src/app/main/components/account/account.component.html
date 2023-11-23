@@ -1,1 +1,42 @@
-<p>account works!</p>
+<div class="cart">
+    <div class="header">
+        <div class="profile">
+
+        </div>
+        <div class="detail">
+            <div class="name">
+                Yash Sakhla
+            </div>
+            <div class="location">
+                AB resort
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row" *ngFor="let product of topCatagories; let i = index" (click)="showPopup= !showPopup">
+                <div class="left">
+                    <div class="icon">
+                        <img src="assets/images/shared/back-arrow.svg" alt="">
+                    </div>
+                    <div class="detail">
+                        <div class="detail-top">
+                            <div class="name">
+                                {{product.name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <img src="assets/images/shared/back-arrow.svg" alt="">
+                </div>
+        </div>
+    </div>
+    <div class="footer-btn">
+        <button class="primary-button light">Logout</button>
+    </div>
+</div>
+
+<div class="popup" *ngIf="showPopup">
+    <app-popup [userPopup]="clickedPopup" (close)="showPopup = !showPopup"></app-popup>
+</div>

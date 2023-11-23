@@ -16,6 +16,18 @@
         .search-btn{
             width: 100%;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            input{
+                width: 90%;
+            }
+            .filter-img{
+                position: relative;
+                top: 0;
+                left: 0;
+            }
             img{
                 width: 1.2rem;
                 position: absolute;
@@ -55,6 +67,10 @@
                     text-align: center;
                 }
             }
+        }
+
+        .after-search-ui{
+            @include flex-container(center,center);
         }
     }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,12 +11,13 @@ export class ProductBlockComponent {
   @Input() productData:any;
   @Input() searchedParams:any;
 
+  @Output() redirectTodetail = new EventEmitter<boolean>;
+
   constructor(private router:Router){
 
   }
 
   redirect(){
-    this.router.navigate(['main/product-detail']);
-    localStorage.setItem('searchedHistory',JSON.stringify(this.searchedParams));
+    this.redirectTodetail.emit(true);
   }
 }

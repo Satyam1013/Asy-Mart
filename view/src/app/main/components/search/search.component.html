@@ -1,9 +1,10 @@
-<div class="search">
+<div class="search" *ngIf="!showProductdetail else productDetail">
   <div class="header">
     <div class="heading">Find Products</div>
     <div class="search-btn">
-      <input class="search-input" placeholder="Search Product" type="text" [(ngModel)]="searchValue" (change)="searchProduct($event.target)" />
+      <input class="search-input" #myinput placeholder="Search Product" type="text" [(ngModel)]="searchValue" (change)="searchProduct($event.target)" />
       <img src="assets/images/shared/search-btn.svg" alt="search">
+      <img class="filter-img" src="assets/images/shared/filter.svg" alt="" (click)="filter()" *ngIf="showProducts" />
     </div>
   </div>
 
@@ -17,9 +18,17 @@
     <ng-template #searchProductUi>
         <div class="products">
             <div class="after-search-ui" *ngFor="let data of topCatagories; let i = index">
-                <app-product-block [productData]="data" [searchedParams]="searchValue"></app-product-block>
+                <app-product-block [productData]="data" [searchedParams]="searchValue" (redirectTodetail)="showDetail($event,data)"></app-product-block>
             </div>
         </div>
     </ng-template>
   </div>
 </div>
+
+<div class="filter" *ngIf="showFilter">
+  <app-popup [filterData]="filters" (close)="filter()"></app-popup>
+</div>
+
+<ng-template #productDetail>
+  <app-product-detail [productData]="productData" (closeDetail)="showDetail()"></app-product-detail>
+</ng-template>

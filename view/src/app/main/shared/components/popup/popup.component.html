@@ -1,0 +1,269 @@
+<div class="popup">
+
+    <div class="filter" *ngIf="filterData">
+        <div class="header">
+            <div class="cross" (click)="closePopup()">
+                <img src="assets/images/shared/cross.svg" alt="">
+            </div>
+            <div class="text">
+                filter
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="categories" *ngFor="let ele of filterData; let i = index">
+                <div class="category-name">
+                    {{ele.name}}
+                </div>
+                <div class="elements" *ngFor="let sub of filterData[i].subEle; let j = index;">
+                    <div class="row">
+                        <div class="checkbox" [class.checked]="sub.isSelected" (click)="select(i,j)">
+                            <img *ngIf="sub.isSelected" src="assets/images/shared/back-arrow.svg" alt="">
+                        </div>
+                        <div class="name" [class.checkedName]="sub.isSelected">
+                            {{sub.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn">
+            <button class="primary-button">Apply filter</button>
+        </div>
+    </div>
+
+    <div class="checkout" *ngIf="cartPopup">
+        <div class="header">
+            <div class="text">
+                Checkout
+            </div>
+            <div class="cross">
+                <img src="assets/images/shared/cross.svg" alt="" (click)="closePopup()">
+            </div>
+        </div>
+        <div class="body">
+            <div class="content">
+                <div class="row" *ngFor="let data of checkoutContent; let i = index">
+                    <div class="head">
+                        <div class="left">
+                            {{data.name}}
+                        </div>
+                        <div class="right">
+                            {{data.value}}
+                        </div>
+                        <img src="assets/images/shared/back-arrow.svg" alt="" (click)="openAcc(i)">
+                    </div>
+                    <div class="content" *ngIf="data.isOpen">
+                        {{data.name}}
+                    </div>
+                </div>
+                <div class="tnc">
+                    By placing an order you agree to our
+                    <a>Terms <s>And</s> Conditions</a>
+                </div>
+            </div>
+            <div class="btn">
+                <button class="primary-button" (click)="placeOrder()">
+                    Place Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="placed-order" *ngIf="orderPlaced">
+        <div class="celebration-img">
+            <img src="assets/images/shared/order-placed.svg" alt="">
+        </div>
+        <div class="text">
+            <div class="main-text">
+                Your order has been placed
+            </div>
+            <div class="sub-text">
+                Your items has been placcd and is on 
+                it’s way to being processed
+            </div>
+        </div>
+        <div class="btns">
+            <button class="primary-button">Trace your orer</button>
+            <button class="primary-button light">Back to home</button>
+        </div>
+    </div>
+
+    <div class="order-failed" *ngIf="orderFailed">
+        <div class="close">
+            <img src="assets/images/shared/cross.svg" alt="" (click)="closePopup()">
+        </div>
+        <div class="failed-img">
+            <img src="assets/images/shared/order-failed.svg" alt="">
+        </div>
+        <div class="texts">
+            <div class="main-text">
+                Oops! Order failed
+            </div>
+            <div class="sub-text">
+                Something went wrong
+            </div>  
+        </div>
+        <div class="btns">
+            <button class="primary-button">Trace your order</button>
+            <button class="primary-button light">Back to home</button>
+        </div>    
+    </div>
+
+    <div class="orders-list" *ngIf="userPopup">
+        <div class="header">
+            <div class="back">
+                <img src="assets/images/shared/back-arrow.svg" alt="" (click)="closePopup()">
+            </div>
+            <div class="text">
+                Orders
+            </div>
+        </div>
+        <div class="content">
+            <div class="tabs">
+                <div class="ongoing" [class.active]="showLive" (click)="showLive = !showLive">
+                    ongoing
+                </div>
+                <div class="history" [class.active]="!showLive" (click)="showLive = !showLive">
+                    History
+                </div>
+            </div>
+            <div class="orders">
+                <ng-template [ngIf]="showLive">
+                    <div class="order-row" *ngFor="let order of userOrders; let i = index">
+                        <div class="left">
+                            <img src="assets/images/shared/order-list.svg" alt="order">
+                        </div>
+                        <div class="middle" (click)="selectOrder(order)">
+                            <div class="order-name">
+                                Order #{{order.orderNo}}
+                            </div>
+                            <div class="order-status">
+                                {{order.orderStatus}}
+                            </div>
+                            <div class="order-date">
+                                {{order.orderDate}}
+                            </div>
+                        </div>
+                        <div class="right">
+                            ₹{{order.orderAmount}}
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template [ngIf]="!showLive">
+                    <div class="order-row" *ngFor="let order of userOrdersHistory; let i = index">
+                        <div class="left">
+                            <img src="assets/images/shared/order-list.svg" alt="order">
+                        </div>
+                        <div class="middle" (click)="selectOrder(order)">
+                            <div class="order-name">
+                                Order #{{order.orderNo}}
+                            </div>
+                            <div class="order-status">
+                                {{order.orderStatus}}
+                            </div>
+                            <div class="order-date">
+                                {{order.orderDate}}
+                            </div>
+                        </div>
+                        <div class="right">
+                            ₹{{order.orderAmount}}
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-detail" *ngIf="selectedOrder">
+        <div class="header">
+            <div class="back">
+                <img src="assets/images/shared/back-arrow.svg" alt="" (click)="closeOrder()">
+            </div>
+            <div class="text">
+                Orders {{selectedOrder?.orderNo}}
+            </div>
+        </div>
+        <div class="content">
+            <div class="est-row">
+                <div class="left">
+                    Estimated Delivery
+                </div>
+                <div class="right">
+                    6:30 pm
+                </div>
+            </div>
+            <div class="date">
+                <img src="assets/images/shared/back-arrow.svg" alt="cal">
+                <div class="order-date">
+                    March 5, 2023
+                </div>
+            </div>
+            <div class="status-load">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="way-text">
+                we are on a way
+            </div>
+            <div class="btn">
+                <button class="primary-button">
+                    show delivery details
+                </button>
+            </div>
+            <div class="delivery-location">
+                <div class="text">
+                    Delivery Location
+                </div>
+                <div class="address">
+                    <div class="left">
+                        <img src="assets/images/shared/back-arrow.svg" alt="">
+                    </div>
+                    <div class="right">
+                        Floor 4, Wakil Tower, Ta 131 Gulshan Badda Link Road
+                    </div>
+                </div>
+            </div>
+            <div class="total">
+                <div class="total-content">
+                    <div class="total-row" *ngFor="let data of orderTotal; let i = index">
+                        <div class="left">
+                            {{data.name}}
+                        </div>
+                        <div class="right">
+                            {{data.value}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-method">
+                <div class="header">
+                    Payment Mode
+                </div>
+                <div class="payment-box">
+                    <div class="left">
+                        <div class="head-text">
+                            your selected
+                        </div>
+                        <div class="selected-mode">
+                            Weekly Pay Mode
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="assets/images/shared/back-arrow.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-text">
+                Cash on derivery has some potential risks of spreading contamination. You can select other payment methods for a contactless safe delivery.
+            </div>
+            <button class="primary-button bottom-btn">
+                Contact support
+            </button>
+        </div>
+    </div>
+
+</div>

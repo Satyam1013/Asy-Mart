@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { filter, pairwise } from 'rxjs';
 
@@ -10,6 +10,9 @@ import { filter, pairwise } from 'rxjs';
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
   reviewStar: any = ['1star', '2star', '3star', '4star', '5star'];
+
+  @Input() productData:any;
+  @Output() closeDetail = new EventEmitter<boolean>;  
 
   detailToggle: any = [false, false];
 
@@ -29,6 +32,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   isDetailOpen: boolean = false;
   isNutritionopen: boolean = false;
   isProductadded: boolean = false;
+  return:boolean = false;
 
   constructor(private router: Router, private location:Location) {
     
@@ -43,7 +47,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   back(){
-    this.location.back();
+    this.closeDetail.emit(true);
   }
 
   action(){
@@ -55,7 +59,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    localStorage.removeItem('searchedHistory');
+
   }
 
 }

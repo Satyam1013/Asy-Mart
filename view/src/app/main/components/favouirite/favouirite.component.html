@@ -1,1 +1,40 @@
-<p>favouirite works!</p>
+<div class="cart" *ngIf="!showProductdetail else productDetail">
+    <div class="header">
+        <div class="heading">
+            Favourite
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row" *ngFor="let product of topCatagories; let i = index" (click)="showDetail(product)">
+            <div class="product-img">
+                <img src="assets/images/home/apple.svg" alt="">
+            </div>
+            <div class="product-detail">
+                <div class="detail-top">
+                    <div class="name">
+                        {{product.name}}
+                    </div>
+                    <div class="desc">
+                        1kg/price
+                    </div>
+                </div>
+            </div>
+            <div class="price">
+                <div class="rate">
+                    ₹75
+                </div>
+                <div class="cross">
+                    <img src="assets/images/shared/back-arrow.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-btn">
+        <button class="primary-button">Add all to cart</button>
+    </div>
+</div>
+
+<ng-template #productDetail>
+    <app-product-detail [productData]="productData" (closeDetail)="showDetail()"></app-product-detail>
+</ng-template>

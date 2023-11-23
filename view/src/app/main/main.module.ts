@@ -9,7 +9,7 @@ import { FavouiriteComponent } from './components/favouirite/favouirite.componen
 import { AccountComponent } from './components/account/account.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductDetailComponent } from './shared/components/product-detail/product-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
 

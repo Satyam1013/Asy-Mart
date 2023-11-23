@@ -29,7 +29,7 @@
 
         .products{
             display: grid;
-            grid-template-columns: 47% 47%;
+            grid-template-columns: 50% 50%;
             padding: 20px 0;
             width: 100%;
             justify-content: space-between;
@@ -55,6 +55,11 @@
                     text-align: center;
                 }
             }
+        }
+
+        .after-search-ui{
+            display: flex;
+            justify-content: center;
         }
     }
 }

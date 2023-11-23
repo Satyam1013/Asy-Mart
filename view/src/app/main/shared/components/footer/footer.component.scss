@@ -11,5 +11,6 @@
     padding: 10px 20px;
     .btn{
         @include flex-container(center,center,column);
+        border: none;
     }
 }

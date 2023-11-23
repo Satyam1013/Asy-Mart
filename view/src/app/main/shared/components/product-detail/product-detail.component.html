@@ -1,4 +1,4 @@
-<div class="product-detail">
+<div class="product-detail-page">
     <div class="top">
         <div class="header">
             <img src="assets/images/shared/back-arrow.svg" alt="backarrow" (click)="back()">
@@ -13,10 +13,10 @@
             <div class="info-top">
                 <div class="left">
                     <div class="name">
-                        Apple
+                        {{productData?.name}}
                     </div>
                     <div class="desc">
-                        1kg/price
+                        {{productData?.quantity}}
                     </div>
                 </div>
                 <div class="right">

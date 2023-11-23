@@ -3,8 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductDetailComponent } from './shared/components/product-detail/product-detail.component';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { CartComponent } from './components/cart/cart.component';
+import { FavouiriteComponent } from './components/favouirite/favouirite.component';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   {
@@ -45,6 +48,27 @@ const routes: Routes = [
         component:ProductCategoryComponent,
         data:{
           showFooter:false
+        }
+      },
+      {
+        path:'cart',
+        component:CartComponent,
+        data:{
+          showFooter:true
+        }
+      },
+      {
+        path:'favourite',
+        component:FavouiriteComponent,
+        data:{
+          showFooter:true
+        }
+      },
+      {
+        path:'account',
+        component:AccountComponent,
+        data:{
+          showFooter:true
         }
       }
     ]

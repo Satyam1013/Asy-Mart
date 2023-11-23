@@ -1,0 +1,85 @@
+@import "../../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/helpers/animation";
+
+.cart{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    .header{
+        position: absolute;
+        top: 0;
+        height: 6rem;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+        border-bottom: 1px solid #E2E2E2;
+        background: #fff;
+        z-index: 99;
+        .heading{
+            @include font(1.6, #000000);
+            font-weight: bold;
+        }
+    }
+
+    .content{
+        width: 100%;
+        padding: 0 1.5rem;
+        padding-top: 6rem;
+        @include flex-container(center,center,column);
+        padding-bottom: 8rem;
+        .row{
+            width: 100%;
+            @include flex-container(center,center,row);
+            height: 8rem;
+            border-bottom: 1px solid #E2E2E2;
+            .product-img{
+                width: 30%;
+                img{
+                    width: 7rem;
+                }
+            }
+            .product-detail{
+                width: 50%;
+                .detail-top{
+                    .name{
+                        @include font(1.4, #000000);
+                        font-weight: 600;
+                        line-height: 20px;
+                    }
+                    .desc{
+                        @include font(0.9, #000000);
+                    }
+                }
+            }
+
+            .price{
+                @include flex-container(center,center,row);
+                gap: 5px;
+                width: 20%;
+                .cross{
+                    img{
+                        width: 0.7rem;
+                        rotate: 180deg;
+                    }
+                }
+                .rate{
+                    @include font(1.3,#000000);
+                    font-weight: 600;
+                    line-height: 15px;
+                }
+            }
+        }
+    }
+
+    .footer-btn{
+        text-align: center;
+        position: absolute;
+        bottom: 80px;
+        width: 100%;
+        animation: 1s ease-in-out 0s 1 slideInFromRight;
+        button{
+
+            width: 75%;
+        }
+    }
+}

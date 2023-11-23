@@ -1,1 +1,69 @@
-<p>cart works!</p>
+<div class="cart" *ngIf="!showProductdetail else productDetail">
+    <div class="header">
+        <div class="heading">
+            My Cart
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="row" *ngFor="let product of topCatagories; let i = index">
+            <div class="product-img">
+                <img src="assets/images/home/apple.svg" alt="">
+            </div>
+            <div class="product-detail">
+                <div class="detail-top" (click)="showDetail(product)">
+                    <div class="name">
+                        {{product.name}}
+                    </div>
+                    <div class="desc">
+                        {{product.quantity}}
+                    </div>
+                </div>
+                <div class="detail-bottom">
+                    <div class="left">
+                        <div class="minus" [class.inactive]="true">
+                            <img src="assets/images/shared/minus.svg" alt="minus">
+                        </div>
+                        <div class="quantity">
+                            1
+                        </div>
+                        <div class="plus" [class.inactive]="false">
+                            <img src="assets/images/shared/plus.svg" alt="plus">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="price">
+                <div class="cross">
+                    <img src="assets/images/shared/cross.svg" alt="">
+                </div>
+                <div class="rate">
+                    {{product.price}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="total">
+        <div class="left">
+            <div class="text">
+                Total: <i>₹750</i>
+            </div>
+            <div class="saved">
+                Saved: ₹750
+            </div>
+        </div>
+        <button class="primary-button" (click)="showCart = !showCart">
+           Order Now
+        </button>
+    </div>
+</div>
+
+<ng-template #productDetail>
+    <app-product-detail [productData]="productData" (closeDetail)="showDetail()"></app-product-detail>
+</ng-template>
+
+<div class="popup" *ngIf="showCart">
+    <app-popup [cartPopup]="topCatagories" (close)="close()">
+    </app-popup>
+</div>

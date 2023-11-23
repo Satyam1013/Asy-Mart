@@ -1,0 +1,95 @@
+@import "../../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/helpers/animation";
+
+.cart{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    padding-top: 1rem;
+    .header{
+        height: 6rem;
+        width: 100%;
+        padding: 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid #E2E2E2;
+        background: #fff;
+        @include flex-container(center,start,row);
+        gap: 10px;
+        z-index: 99;
+        .profile{
+            width: 4rem;
+            height: 4rem;
+            border-radius: 20px;
+            background-color: black;
+        }
+        
+        .detail{
+            .name{
+                @include font(1.7, #000000);
+                line-height: 20px;
+                font-weight: 600;
+            }
+            .location{
+                @include font(1.1, #000000);
+                text-align: start;
+            }
+        }
+    }
+
+    .content{
+        width: 100%;
+        padding: 0 1.5rem;
+        padding-top: 1rem;
+        @include flex-container(center,center,column);
+        padding-bottom: 8rem;
+        .row{
+            width: 100%;
+            @include flex-container(center,space-between,row);
+            height: 3rem;
+            border-bottom: 1px solid #E2E2E2;
+            padding: 0;
+            .left{
+                width: 80%;
+                @include flex-container(center,start,row);
+                padding: 0;
+                .icon{
+                    width: 10%;
+                    img{
+                        width: 0.7rem;
+                    }
+                }
+                .detail{
+                    width: 90%;
+                    .detail-top{
+                        .name{
+                            @include font(1.4, #000000);
+                            font-weight: 600;
+                            line-height: 20px;
+                        }
+                        .desc{
+                            @include font(0.9, #000000);
+                        }
+                    }
+                }
+    
+            }
+                .arrow{
+                    width: 20%;
+                    img{
+                        width: 0.7rem;
+                        rotate: 180deg;
+                    }
+                }
+        }
+    }
+
+    .footer-btn{
+        text-align: center;
+        position: absolute;
+        bottom: 80px;
+        width: 100%;
+        button{
+            width: 85%;
+        }
+    }
+}

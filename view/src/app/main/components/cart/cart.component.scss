@@ -1,0 +1,133 @@
+@import "../../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/helpers/animation";
+
+.cart{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    .header{
+        position: absolute;
+        top: 0;
+        height: 6rem;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+        border-bottom: 1px solid #E2E2E2;
+        background: #fff;
+        z-index: 99;
+        .heading{
+            @include font(1.6, #000000);
+            font-weight: bold;
+        }
+    }
+
+    .content{
+        width: 100%;
+        padding: 0 1.5rem;
+        padding-top: 6rem;
+        @include flex-container(center,center,column);
+        padding-bottom: 8rem;
+        .row{
+            width: 100%;
+            @include flex-container(center,center,row);
+            height: 12rem;
+            border-bottom: 1px solid #E2E2E2;
+            .product-img{
+                width: 30%;
+                img{
+                    width: 7rem;
+                }
+            }
+            .product-detail{
+                @include flex-container(start,space-around, column);
+                width: 60%;
+                height: 75%;
+                .detail-top{
+                    .name{
+                        @include font(1.4, #000000);
+                        font-weight: 600;
+                        line-height: 20px;
+                    }
+                    .desc{
+                        @include font(0.9, #000000);
+                    }
+                }
+                .detail-bottom{
+                    width: 50%;
+                    .left{
+                        @include flex-container(center,space-between,row);        
+                        width: 100%;              
+                         .plus, .minus{
+                            img{
+                                width: 1.2rem;
+                            }
+    
+                            &.inactive{
+                                opacity: 50%;
+                            }
+                        }
+    
+                        .quantity{
+                            padding: 0.3rem 1rem;
+                            border-radius: 15px;
+                            @include font(1.5, #000000);
+                            text-align: center;
+                            border: 1px solid #E2E2E2;
+                        }
+                    }
+                }
+            }
+
+            .price{
+                @include flex-container(center,space-between,column);
+                width: 10%;
+                height: 70%;
+                .cross{
+                    img{
+                        width: 1.2rem;
+                    }
+                }
+                .rate{
+                    @include font(2,#000000);
+                    font-weight: 600;
+                    line-height: 15px;
+                }
+            }
+        }
+    }
+
+    .total{
+        width: 100%;
+        position: fixed;
+        bottom: 75px;
+        @include flex-container(center,space-around,row);
+        padding: 0.7rem;
+        border-radius: 25px 25px 0 0;
+        background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
+        animation: 1s ease-in-out 0s 1 slideInFromBottom;
+       .left{
+        .text{
+            @include font(1.3,#000000);
+            font-weight: 600;
+            i{
+                font-size: 1.5rem;
+            }
+        }
+        .saved{
+            background: $secondary-color;
+            @include font(0.6, #fff);
+            text-align: center;
+            border-radius: 4px;
+            padding: 0 5px;
+            width: fit-content;
+            
+        }
+       }
+
+       .primary-button{
+        width: 50%;
+        background: transparent;
+        border: 1px solid #e7e7e7;
+       }
+    }
+}

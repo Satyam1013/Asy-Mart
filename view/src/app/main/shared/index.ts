@@ -10,3 +10,28 @@ export const bannerColors = [
   '#F7A59340',
   '#53B1751A',
 ];
+
+export const footer = 
+[
+  {
+    name:'home',
+    btnImg:'home-active'
+
+  },
+  {
+    name:'search',
+    btnImg:'search'
+  },
+  {
+    name:'cart',
+    btnImg:'cart'
+  },
+  {
+    name:'favourite',
+    btnImg:'favourite'
+  },
+  {
+    name:'account',
+    btnImg:'account'
+  }
+]

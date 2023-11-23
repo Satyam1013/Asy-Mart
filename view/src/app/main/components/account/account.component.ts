@@ -7,4 +7,40 @@ import { Component } from '@angular/core';
 })
 export class AccountComponent {
 
+  clickedPopup:any = 'orders';
+  showPopup:boolean = false;
+  topCatagories:any = [
+    {
+      name:'fruit & vegitables',
+      img:'assets/images/home/apple.svg',
+    },
+    {
+      name:'fruit',
+      img:'assets/images/home/apple.svg'
+    },
+    {
+      name:'fruit',
+      img:'assets/images/home/apple.svg'
+    },
+    {
+      name:'fruit',
+      img:'assets/images/home/apple.svg'
+    },
+    {
+      name:'fruit',
+      img:'assets/images/home/apple.svg'
+    },
+    {
+      name:'fruit',
+      img:'assets/images/home/apple.svg'
+    },
+    {
+      name:'fruit',
+      img:'assets/images/home/apple.svg'
+    },
+    {
+      name:'fruit',
+      img:'assets/images/home/apple.svg'
+    }
+  ];
 }

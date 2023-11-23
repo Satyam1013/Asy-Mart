@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { bannerColors } from '../../shared';
 import { Router } from '@angular/router';
 
@@ -17,24 +17,28 @@ export class HomeComponent implements OnInit {
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
     ],
     topSelling: [
@@ -43,24 +47,28 @@ export class HomeComponent implements OnInit {
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
     ],
     grocieries: [
@@ -69,34 +77,41 @@ export class HomeComponent implements OnInit {
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
       {
         name:'apple',
         category:'fruits',
         quantity: '7pcs',
         price:70,
+        img:'assets/images/home/apple.svg'
       },
     ]
   }
+  
+  showProductdetail:boolean = false;
+  productData:any;
 
   constructor(private router:Router){
 
   }
 
   ngOnInit(){
-    console.log('oooo');
+
   }
 
   redirectTosearch(){
@@ -106,5 +121,13 @@ export class HomeComponent implements OnInit {
   redirectTocategory(name:string){
     const url = 'main/product-category/'+name;
     this.router.navigate([url]);
+  }
+
+  showDetail(event?:any,data?:any){
+    if(event){
+      this.productData = data;
+    }
+    this.showProductdetail = !this.showProductdetail;
+
   }
 }
