@@ -4,7 +4,7 @@
   "description": "Introducing AsyMart, your premier partner for seamless procurement solutions. AsyMart specializes in establishing vendor relationships with hotels, restaurants, and resorts, streamlining the supply of groceries, toiletries, and various essentials. With our intuitive phone application, our clients can effortlessly place orders, ensuring timely deliveries of high-quality products. Elevate your hospitality business with AsyMart's efficient and convenient procurement services.",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
+    "server": "nodemon index.ts",
     "test": "npm run test"
   },
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Satyam1013/Asy-Mart#readme",
   "dependencies": {
+    "@types/express": "^4.17.21",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -28,5 +29,9 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.5.0",
     "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "typescript": "^5.3.2"
   }
 }
