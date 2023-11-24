@@ -16,7 +16,7 @@ interface User {
 interface UserDocument extends User, Document {}
 
 interface Cart {
-  title: string;
+  name: string;
   image: string;
   discount_price?: number;
   quantity?: number;
@@ -26,7 +26,7 @@ interface Cart {
 interface CartDocument extends Cart, Document {}
 
 interface FavList {
-  title: string;
+  name: string;
   image: string;
   discount_price?: number;
   quantity?: number;
@@ -36,30 +36,96 @@ interface FavList {
 interface FavListDocument extends FavList, Document {}
 
 interface Home {
-  title: string;
+  name: string;
   image: string;
+  price?: number;
   discount_price?: number;
-  original_price?: number;
   discount?: string;
+  stock?: string;
   rating?: number;
-  features?: string;
-  total_ratings?: string;
-  reviews?: string;
-  cod?: string;
   description?: string;
-  availability?: string;
+  brand?: string;
+  isVisible?: boolean;
+  quantity?: number;
+  isAvailable?: boolean;
 }
 
 interface HomeDocument extends Home, Document {}
 
 interface UserRequestBody {
-    username: string;
-    email: string;
-    password: string;
-    phoneNo: string;
-    landlineNo: string;
-    address: string;
-  }
+  username: string;
+  email: string;
+  password: string;
+  phoneNo: string;
+  landlineNo: string;
+  address: string;
+}
+
+interface Toiletries {
+ name: string;
+  image: string;
+  price?: number;
+  discount_price?: number;
+  discount?: string;
+  stock?: string;
+  rating?: number;
+  description?: string;
+  brand?: string;
+  isVisible?: boolean;
+  quantity?: number;
+  isAvailable?: boolean;
+}
+
+interface ToiletriesDocument extends Toiletries, Document {}
+
+interface Grocery {
+  name: string;
+  image: string;
+  price?: number;
+  discount_price?: number;
+  discount?: string;
+  stock?: string;
+  rating?: number;
+  description?: string;
+  brand?: string;
+  isVisible?: boolean;
+  quantity?: number;
+  isAvailable?: boolean;
+}
+
+interface GroceryDocument extends Grocery, Document {}
+
+interface Fruits {
+  name: string;
+  image: string;
+  price?: number;
+  discount_price?: number;
+  discount?: string;
+  stock?: number;
+  rating?: number;
+  description?: string;
+  isAvailable?: boolean;
+  isVisible?: boolean;
+  quantity?: number;
+}
+
+interface FruitsDocument extends Fruits, Document {}
+
+interface Vegetables {
+  name: string;
+  image: string;
+  price?: number;
+  discount_price?: number;
+  discount?: string;
+  stock?: number;
+  rating?: number;
+  description?: string;
+  isAvailable?: boolean;
+  isVisible?: boolean;
+  quantity?: number;
+}
+
+interface VegetablesDocument extends Vegetables, Document {}
 
 export {
   User,
@@ -71,5 +137,9 @@ export {
   Home,
   HomeDocument,
   DecodedToken,
-  UserRequestBody
+  UserRequestBody,
+  ToiletriesDocument,
+  FruitsDocument,
+  VegetablesDocument,
+  GroceryDocument
 };

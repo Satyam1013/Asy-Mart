@@ -1,16 +1,15 @@
-const { favListModel } = require("../model/fav-list-model");
+const { FavListModel } = require("../model/fav-list-model");
 import { Request, Response } from "express";
-import { Document } from "mongoose";
 const favListRouter = require("express").Router();
 const jwt = require("jsonwebtoken");
-import { DecodedToken } from "../types";
+import { DecodedToken, FavList } from "../types";
 
 favListRouter.get("/", async (req: Request, res: Response) => {
   const token = req.headers.authorization;
   const decoded = jwt.verify(token, "tom") as DecodedToken;
   try {
     if (decoded) {
-      const data = await favListModel.find({ userID: decoded.id });
+      const data = await FavListModel.find({ userID: decoded.id });
       res.status(200).send(data);
     }
   } catch (err) {
@@ -19,18 +18,41 @@ favListRouter.get("/", async (req: Request, res: Response) => {
 });
 
 favListRouter.post("/post", async (req: Request, res: Response) => {
-  const cartItem = new favListModel(req.body as Document);
-  try {
-    const newFavoriteItem = await cartItem.save();
-    res.status(200).json({ message: "Added in Favorite List", data: newFavoriteItem });
-  } catch (err) {
-    res.status(400).json({ message: "Already present in your Favorite List" });
+  const token = req.headers.authorization;
+  const decoded = jwt.verify(token, "tom") as DecodedToken;
+
+  if (decoded) {
+    const cartItemData = req.body as FavList;
+
+    try {
+      const newCartItem = await FavListModel.create({
+        ...cartItemData,
+        userID: decoded.id,
+      });
+
+      res.status(200).json({ message: "Added to Favorite List", data: newCartItem });
+    } catch (err) {
+      res.status(400).json({ message: "Already present in your Favorite List" });
+    }
+  } else {
+    res.status(401).json({ message: "Invalid token" });
   }
 });
 
 favListRouter.delete("/delete/:_id", async (req: Request, res: Response) => {
   try {
-    const removedCartItem = await favListModel.findByIdAndRemove(req.params._id);
+    const decoded = jwt.verify(req.headers.authorization, "tom") as DecodedToken;
+    const cartItem = await FavListModel.findById(req.params._id);
+
+    if (!cartItem) {
+      return res.status(404).json({ message: "Cart item not found" });
+    }
+
+    if (cartItem.userID !== decoded.id) {
+      return res.status(403).json({ message: "Access forbidden. This cart does not belong to the authenticated user." });
+    }
+
+    const removedCartItem = await FavListModel.findByIdAndRemove(req.params._id);
     res.json(removedCartItem);
   } catch (error) {
     res.status(500).json({ message: (error as Error)?.message });
