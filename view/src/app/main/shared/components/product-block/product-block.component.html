@@ -1,18 +1,18 @@
 <div class="product">
     <div class="top">
-        <img [src]="productData.img" alt="product-img">
+        <img [src]="productData.image" alt="product-img">
     </div>
     <div class="middle" (click)="redirect()">
         <div class="product-name">
             {{productData.name}}
         </div>
         <div class="product-desc">
-            {{productData.quantity}}
+            {{productData.description}}
         </div>
     </div>
     <div class="bottom">
         <div class="price">
-            ₹{{productData.price}}
+            ₹{{productData.price}} <s>₹40</s>
         </div>
         <div class="add-btn">
             <img src="assets/images/shared/add-btn.svg" alt="add-btn">

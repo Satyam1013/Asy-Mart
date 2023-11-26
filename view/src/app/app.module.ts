@@ -12,7 +12,6 @@ import { LocationComponent } from './location/location.component';
 import { CoreModule } from './core';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -9,16 +9,16 @@
     position: absolute;
     z-index: 999;
     background-color: $primary-color;
-    .top{
+    animation: fadeIn 1s forwards;
 
+    .top{
         background: #F2F3F2;
         height: 40%;
         width: 100%;
         border-radius: 0 0 25px 25px;
         padding: 15px;
-        @include flex-container(unset,start,column);
+        @include flex-container(unset,space-between,column);
         backdrop-filter: blur(10px);
-        gap: 25%;
 
         .header{
             @include flex-container(center,space-between,row);
@@ -32,7 +32,11 @@
         }
 
         .product-img{
-            width: 100%;
+            @include flex-container(center,center,row);
+            height: 15rem;
+            .slider{
+                width: 50%;
+            }
         }
 
     }
@@ -148,7 +152,7 @@
             .show-detail{
                 padding: 5px 10px;
                 padding-bottom: 0;
-                @include font(1.1, #7C7C7C);
+                @include font(1.1, #7C7C7C, GiloryLight);
                 padding-bottom: 10px;
             }
         }

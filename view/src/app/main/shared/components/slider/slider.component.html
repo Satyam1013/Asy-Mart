@@ -27,7 +27,8 @@
   </div>
   <div class="carousel-inner">
     <div *ngFor="let img of bannerData; let i = index" class="carousel-item active">
-      <img  src="{{img.img}}" class="d-block w-100" alt="..." />
+      <img *ngIf="home" [ngSrc]="image" [width]="380" [height]="120" class="d-block w-100" alt="..."  priority/>
+      <img *ngIf="!home" [ngSrc]="image" [width]="250" [height]="250" class="d-block w-100" alt="..."  priority/>
     </div>
   </div>
 </div>

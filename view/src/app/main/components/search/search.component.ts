@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { bannerColors } from '../../shared';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { AppService } from 'src/app/core/services/app.service';
 
 @Component({
   selector: 'app-search',
@@ -55,6 +56,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       img: 'assets/images/home/apple.svg',
     },
   ];
+  products:any;
   filters: any = [
     {
       name: 'categories',
@@ -123,8 +125,9 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   showProductdetail: boolean = false;
   productData: any;
   showFilter: boolean = false;
+  loader: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private appService:AppService) {}
 
   ngOnInit() {
     
@@ -137,8 +140,14 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   searchProduct(searchedEvent: any) {
-    console.log(searchedEvent);
-    this.showProducts = true;
+    this.loader= true;
+    this.appService.fetchTopproducts().subscribe((res)=>{
+      console.log(res);
+      this.loader = false;
+      this.products = res[0].topProducts.offer;
+      this.showProducts = true;
+    })
+    
   }
 
 

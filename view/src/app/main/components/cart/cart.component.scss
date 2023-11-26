@@ -30,7 +30,7 @@
         .row{
             width: 100%;
             @include flex-container(center,center,row);
-            height: 12rem;
+            height: 10rem;
             border-bottom: 1px solid #E2E2E2;
             .product-img{
                 width: 30%;
@@ -39,14 +39,14 @@
                 }
             }
             .product-detail{
-                @include flex-container(start,space-around, column);
+                @include flex-container(start,space-between, column);
                 width: 60%;
                 height: 75%;
                 .detail-top{
                     .name{
                         @include font(1.4, #000000);
                         font-weight: 600;
-                        line-height: 20px;
+                        line-height: 30px;
                     }
                     .desc{
                         @include font(0.9, #000000);

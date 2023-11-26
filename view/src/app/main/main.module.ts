@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductDetailComponent } from './shared/components/product-detail/product-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { NgOptimizedImage } from '@angular/common';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ProductCategoryComponent } from './components/product-category/product-
     MainRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ]
 })
 export class MainModule { }

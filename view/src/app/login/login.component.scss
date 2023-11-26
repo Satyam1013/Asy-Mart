@@ -8,7 +8,6 @@
     margin: 0;
     @include flex-container(center,start,column);
     background: linear-gradient(to top, rgba(255,0,0,0), $secondary-color);
-
     .logo{
         padding-top: 3rem;
         img{

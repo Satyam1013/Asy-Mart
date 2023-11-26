@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class="search-content">
+  <div class="search-content" *ngIf="!loader">
     <div class="before-search-ui products" *ngIf="!showProducts else searchProductUi">
       <div class="category-block" [ngStyle]="{ 'background-color': bannerColor[i], 'border-color':bannerColor[i] }"  *ngFor="let data of topCatagories; let i = index">
         <img [src]="data.img" alt="">
@@ -17,11 +17,30 @@
     </div>
     <ng-template #searchProductUi>
         <div class="products">
-            <div class="after-search-ui" *ngFor="let data of topCatagories; let i = index">
+            <div class="after-search-ui" *ngFor="let data of products; let i = index">
                 <app-product-block [productData]="data" [searchedParams]="searchValue" (redirectTodetail)="showDetail($event,data)"></app-product-block>
             </div>
         </div>
     </ng-template>
+  </div>
+
+  <div class="loader" *ngIf="loader">
+    <div class="products-loader search-loader">
+        <span class="shimmerBG product-loader"></span>
+        <span class="shimmerBG product-loader"></span>
+    </div>
+    <div class="products-loader search-loader">
+        <span class="shimmerBG product-loader"></span>
+        <span class="shimmerBG product-loader"></span>
+    </div>
+    <div class="products-loader search-loader">
+        <span class="shimmerBG product-loader"></span>
+        <span class="shimmerBG product-loader"></span>
+    </div>
+    <div class="products-loader search-loader">
+      <span class="shimmerBG product-loader"></span>
+      <span class="shimmerBG product-loader"></span>
+  </div>
   </div>
 </div>
 

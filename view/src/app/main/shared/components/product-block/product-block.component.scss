@@ -10,8 +10,9 @@
     padding: 0.7rem;
     padding-bottom: 5px;
     .top{
+        height: 45%;
         img{
-            width: 9rem;
+            width: 7.5rem;
             max-width: 10rem;
         }
     }
@@ -21,9 +22,14 @@
         .product-name{
             @include font(1.1,#181725);
             font-weight: bold;
+            line-height: 20px;
         }
         .product-desc{
             @include font(0.8, #7C7C7C);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-wrap: nowrap;
+            width: 90%;
         }
     }
 
@@ -33,6 +39,9 @@
         .price{
             @include font(1.2,#181725);
             font-weight: bold;
+            s{
+                @include font(0.9, #000000, GiloryLight);
+            }
         }
         .add-btn{
             background: #53B175;
@@ -44,4 +53,25 @@
             }
         }
     }   
+}
+
+.loader{
+    padding: 0.3rem;
+    @include flex-container(center,space-evenly,column);
+
+    .top{
+        height: 40%;
+        width: 100%;
+    }
+
+    .middle{
+        height: 15%;
+        width: 100%;
+    }
+
+    .bottom{
+        height: 10%;
+        width: 100%;
+    }
+
 }

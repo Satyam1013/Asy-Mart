@@ -1,4 +1,5 @@
 <div class="home" *ngIf="!showProductdetail else productDetail">
+
     <div class="location">
         <div class="logo">
             <img src="assets/images/splash/logo.png" alt="logo">
@@ -10,52 +11,77 @@
             </div>
         </div>
     </div>
+
     <div class="searchbtn">
         <input type="text" class="search-input" placeholder="search item" (click)="redirectTosearch()">
         <img src="assets/images/shared/search-btn.svg" alt="search">
     </div>
-    <div class="banners">
-        <app-slider></app-slider>
-    </div>
-    <div class="offers products-row">
-        <div class="header">
-            <div class="left">Exclusive Offer</div>
-            <div class="right" (click)="redirectTocategory('offers')">see all</div>
+
+    <div *ngIf="!loader">
+        <div class="banners">
+            <app-slider  [image]="bannerImg[0].img" [home]="true"></app-slider>
         </div>
-        <div class="content">
-            <div class="products" *ngFor="let product of products.offers; let i = index">
-                <app-product-block [productData]="product" (redirectTodetail)="showDetail($event, product)"></app-product-block>
+        <div class="offers products-row">
+            <div class="header">
+                <div class="left">Exclusive Offer</div>
+                <div class="right" (click)="redirectTocategory('offers')">see all</div>
             </div>
-        </div>
-    </div>
-    <div class="best-selling products-row">
-        <div class="header">
-            <div class="left">Top selling</div>
-            <div class="right" (click)="redirectTocategory('top')">see all</div>
-        </div>
-        <div class="content">
-            <div class="products" *ngFor="let product of products.topSelling; let i = index">
-                <app-product-block [productData]="product" (redirectTodetail)="showDetail($event, product)"></app-product-block>
-            </div>
-        </div>
-    </div>
-    <div class="groceries products-row">
-        <div class="header">
-            <div class="left">Grocieries</div>
-            <div class="right" (click)="redirectTocategory('grocieries')">see all</div>
-        </div>
-        <div class="content">
-            <div class="product-banner"  [ngStyle]="{'background':bannerColors[i]}" *ngFor="let product of products.grocieries; let i = index">
-                <div class="content">
-                    <img src="assets/images/home/location.svg" alt="product-banner">
-                    <div class="name">{{product.name}}</div>
+            <div class="content">
+                <div class="products" *ngFor="let product of products.offer; let i = index">
+                    <app-product-block [productData]="product" (redirectTodetail)="showDetail($event, product)"></app-product-block>
                 </div>
             </div>
         </div>
-        <div class="content">
-            <div class="products" *ngFor="let product of products.grocieries; let i = index">
-                <app-product-block [productData]="product" (redirectTodetail)="showDetail($event, product)"></app-product-block>
+        <div class="best-selling products-row">
+            <div class="header">
+                <div class="left">Top selling</div>
+                <div class="right" (click)="redirectTocategory('top')">see all</div>
             </div>
+            <div class="content">
+                <div class="products" *ngFor="let product of products.topSelling; let i = index">
+                    <app-product-block [productData]="product" (redirectTodetail)="showDetail($event, product)"></app-product-block>
+                </div>
+            </div>
+        </div>
+        <div class="groceries products-row">
+            <div class="header">
+                <div class="left">Grocieries</div>
+                <div class="right" (click)="redirectTocategory('grocieries')">see all</div>
+            </div>
+            <div class="content">
+                <div class="product-banner" [ngStyle]="{'background':bannerColors[i]}" *ngFor="let product of products.grocery; let i = index">
+                    <div class="content">
+                        <img [src]="product.image" alt="product-banner">
+                        <div class="name">{{product.name}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="products" *ngFor="let product of products.grocery; let i = index">
+                    <app-product-block [productData]="product" (redirectTodetail)="showDetail($event, product)"></app-product-block>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader" *ngIf="loader">
+        <div class="shimmerBG banner-loader">
+
+        </div>
+        <div class="products-loader">
+            <span class="shimmerBG product-loader"></span>
+            <span class="shimmerBG product-loader"></span>
+            <span class="shimmerBG product-loader"></span>
+        </div>
+        <div class="products-loader">
+            <span class="shimmerBG product-loader"></span>
+            <span class="shimmerBG product-loader"></span>
+            <span class="shimmerBG product-loader"></span>
+        </div>
+        <div class="products-loader">
+            <span class="shimmerBG product-loader"></span>
+            <span class="shimmerBG product-loader"></span>
+            <span class="shimmerBG product-loader"></span>
         </div>
     </div>
 </div>

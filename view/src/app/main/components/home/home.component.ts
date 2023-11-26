@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { bannerColors } from '../../shared';
 import { Router } from '@angular/router';
+import { AppService } from 'src/app/core/services/app.service';
 
 @Component({
   selector: 'app-home',
@@ -10,109 +11,34 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   bannerColors:any = bannerColors;
-  products:any = {
-    offers: [
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-    ],
-    topSelling: [
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-    ],
-    grocieries: [
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-      {
-        name:'apple',
-        category:'fruits',
-        quantity: '7pcs',
-        price:70,
-        img:'assets/images/home/apple.svg'
-      },
-    ]
-  }
-  
+  products:any;
   showProductdetail:boolean = false;
   productData:any;
+  bannerImg:any = [
+    {
+      img:'assets/images/home/banner.svg'
+    },
+    {
+      img:'assets/images/home/banner.svg'
+    },
+    {
+      img:'assets/images/home/banner.svg'
+    }
+  ]
+  loader: boolean = false;
 
-  constructor(private router:Router){
+  constructor(private router:Router, private appService:AppService){
 
   }
 
   ngOnInit(){
-
-  }
+    this.loader = true;
+    this.appService.fetchTopproducts().subscribe((res)=>{
+      console.log(res);
+      this.loader = false;
+      this.products = res[0].topProducts;
+    })
+  } 
 
   redirectTosearch(){
       this.router.navigate(['main/search']);

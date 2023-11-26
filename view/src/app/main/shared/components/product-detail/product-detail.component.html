@@ -5,7 +5,9 @@
             <img src="assets/images/shared/share.svg" class="share" alt="share">
         </div>
         <div class="product-img">
-            <app-slider></app-slider>
+            <div class="slider">
+                <app-slider [image]="productData.image"></app-slider>
+            </div>
         </div>
     </div>
     <div class="bottom">
@@ -20,7 +22,7 @@
                     </div>
                 </div>
                 <div class="right">
-                    <img src="assets/images/shared/heart-unlike.svg" alt="heart">
+                    <img src="assets/images/shared/heart-unlike.svg" alt="heart" (click)="likeProduct()">
                 </div>
             </div>
             <div class="info-bottom">

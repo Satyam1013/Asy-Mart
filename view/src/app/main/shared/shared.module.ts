@@ -5,13 +5,15 @@ import { SliderComponent } from './components/slider/slider.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { ProductBlockComponent } from './components/product-block/product-block.component';
 import { PopupComponent } from './components/popup/popup.component';
+import { NgOptimizedImage } from '@angular/common';
 
 
 
 @NgModule({
   declarations: [FooterComponent, SliderComponent, SearchInputComponent, ProductBlockComponent, PopupComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    NgOptimizedImage
   ],
   exports: [FooterComponent, SliderComponent, ProductBlockComponent, PopupComponent]
 })

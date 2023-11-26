@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { filter, pairwise } from 'rxjs';
+import { AppService } from 'src/app/core/services/app.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -34,7 +35,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   isProductadded: boolean = false;
   return:boolean = false;
 
-  constructor(private router: Router, private location:Location) {
+  constructor(private router: Router, private location:Location, private appService:AppService) {
     
   }
 
@@ -60,6 +61,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
+  }
+
+  likeProduct(){
+    let payload = this.productData;
+    this.appService.addTofavouriteProductList(payload).subscribe((res)=>{
+      console.log(res)
+    })
   }
 
 }

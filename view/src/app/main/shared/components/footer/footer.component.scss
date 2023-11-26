@@ -4,13 +4,13 @@
     background-color: #FFFFFF;
     border-radius: 25px 25px 0 0;
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0;
     @include flex-container(center,center,row);
     gap: 1rem;
-    padding: 10px 20px;
     .btn{
         @include flex-container(center,center,column);
         border: none;
+        width: 15%;
     }
 }

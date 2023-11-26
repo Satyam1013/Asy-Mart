@@ -1,5 +1,6 @@
 @import "./../helpers/variable";
 @import "./../helpers/mixins";
+@import "./../helpers/animation";
 
 *{
     box-sizing: border-box;
@@ -13,6 +14,10 @@ html{
     -webkit-tap-highlight-color: transparent;
     width: 100%;
     height: 100%;
+}
+
+i{
+    font-size: 2rem;
 }
 
 ::-webkit-scrollbar {
@@ -147,4 +152,59 @@ label{
 .disable{
     opacity: 75%;
     pointer-events: none;
+}
+
+.products-loader{
+    @include flex-container(center,start,row);
+    gap: 5%;
+    width: 100%;
+    span{
+        width: 35%;
+        height: 7rem;
+        border: 0.5px solid #e7e7e7;
+        border-radius: 10%;
+    }
+}
+
+.search-loader{
+    gap: 10%;
+    padding-top: 1rem;
+    span{
+        width: 45%;
+        height: 12rem;
+    }
+}
+
+.shimmerBG {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+    background-size: 1200px 100%;
+    border-radius: 10%;
+}
+
+@media only screen and (min-device-width:320px) and (max-device-width:480px) {
+    
+}
+
+@media only screen and (min-device-width:320px) and (max-device-width:568px) {
+    html{
+        font-size: 12px !important;
+    }
+}
+
+@media only screen and (min-device-width:375px) and (max-device-width:667px) {
+    html{
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-device-width:414px) and (max-device-width:736px) {
+    html{
+        font-size: 15px !important;
+    }
 }
